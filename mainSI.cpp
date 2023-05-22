@@ -4,7 +4,7 @@
 
 //***********************
 // Space Invaders Open GL
-// Claudio Rossi, Universidad Politécnica de Madrid 
+// Claudio Rossi, Universidad PolitÃ©cnica de Madrid 
 // (C) 2015-2023 
 //***********************
 
@@ -15,6 +15,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+//AÃ‘ADO ESTO
+#ifdef WINDOWS
+#elsedef
+//seria asi??
 #include <unistd.h>  // Esta solo sirve para linux Y osX !!!
 #include <string.h>
 
@@ -51,7 +55,7 @@ void printdata();
 // Variables globales
 //***********************
 
-// Posición y step de la camara
+// PosiciÃ³n y step de la camara
 float cam_pos[6]={0, 0, 27};
 
 
@@ -87,7 +91,7 @@ int main(int argc,char* argv[])
   // inicializaciones
 
   
-  // Inicialización GLUT
+  // InicializaciÃ³n GLUT
   glutInit(&argc, argv);
 
   // Inicializaciones openGL (ver GLstuff.c)
@@ -101,25 +105,25 @@ int main(int argc,char* argv[])
     // Idle function: contiene la logica del juego
   glutIdleFunc(myLogic);
   
-  // Callbacks de teclado y ratón
+  // Callbacks de teclado y ratÃ³n
   glutKeyboardFunc(OnKeyboardDown);
   glutSpecialFunc(OnSpecKeyboardDown);
   glutMotionFunc(OnMouseMoveBtn);
   glutMouseFunc(OnMouseBtn);
 
   
-  // Posicciona el punto de vista (cámara)
+  // Posicciona el punto de vista (cÃ¡mara)
   gluLookAt(cam_pos[0],cam_pos[1],cam_pos[2],  // posicion del  ojo  
 	    0.0, 0.0, 0.0,		        // hacia que punto mira  
 	    0.0, 1.0, 0.0);         // vector "UP"  (vertical positivo)
 
 
   
-  // Creacción de los objetos iniciales
+  // CreacciÃ³n de los objetos iniciales
   theShip  = worldobjects.getShip();
   Team = new Invaders(&worldobjects);
 
-  // WORLDOBJECTS es una variable estática, se inicializa "automaticamente" - contiene los alienigenas  //***
+  // WORLDOBJECTS es una variable estÃ¡tica, se inicializa "automaticamente" - contiene los alienigenas  //***
 
   
   // Carga la imagen del fondo
@@ -131,7 +135,7 @@ int main(int argc,char* argv[])
   // bucle infinito de Open GL
   glutMainLoop();
 
-  // Esto solo sirve para que el compilador no proteste, nunca se llegará aquí
+  // Esto solo sirve para que el compilador no proteste, nunca se llegarÃ¡ aquÃ­
   return 0;   
 
 }
@@ -147,7 +151,7 @@ int main(int argc,char* argv[])
 //***********************
 
 
-// Imprime puntuacción y num. de naves
+// Imprime puntuacciÃ³n y num. de naves
 void printdata()
 {
   int i,l;
@@ -198,7 +202,7 @@ void myLogic()
     else ;
   else
     {
-      // borra el proyectil después de cierto tiempo si no ha dado con nada
+      // borra el proyectil despuÃ©s de cierto tiempo si no ha dado con nada
       if(shotTime++>MAXSHOTTIME)
 	{
 	  worldobjects.remove(theBullet);    // si theBullet==NULL no pasa nada, la remove no lo encuentra y no hace nada
@@ -212,8 +216,8 @@ void myLogic()
       // mueve los alienos
       Team->move();
       
-      // Pide si ha habido colisión, pasa referencia a proyectil y nave, retorna tipo de colisión y posición de la colisión
-      // res==0:  No ha colisicón
+      // Pide si ha habido colisiÃ³n, pasa referencia a proyectil y nave, retorna tipo de colisiÃ³n y posiciÃ³n de la colisiÃ³n
+      // res==0:  No ha colisicÃ³n
       // res==1:  Proyectil/Nave
       // res>=2:  Alien/Proyectil, depende del tipo de Alien
       res = worldobjects.collisions(theBullet,theShip);    
