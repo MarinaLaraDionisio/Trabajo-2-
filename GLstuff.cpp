@@ -1,8 +1,8 @@
 
  #include "commonstuff.h"
 
-
-#include <GLUT/glut.h>
+#include <Windows.h>
+#include "glut.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
