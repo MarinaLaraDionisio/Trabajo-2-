@@ -4,9 +4,9 @@
 #include <math.h>
 
  
-
+#include <windows.h>
 //#ifdef linux
-#include <GLUT/glut.h>
+#include "glut.h"
 #include <stdlib.h>
 
 
