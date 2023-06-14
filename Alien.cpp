@@ -101,7 +101,7 @@ void Alien::move()
 }
 
 
-float Alien::operator+(Shape* other)
+/*float Alien::operator+(Shape* other)
 {
   // PONER AQUI VUESTRO CODIGO 
-}
+}*/
