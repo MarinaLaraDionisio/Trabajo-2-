@@ -19,18 +19,18 @@ class ObjectsList{
 
  protected:
   Lista L;
-  
+
  public:
   ObjectsList();
   ~ObjectsList();
   void move();
   void draw();
+  Ship* getShip();
   void add(Shape*);
   void remove(Shape*);
-  Ship* getShip();
   int collisions(Bullet*,Ship*);
 
-  friend class Invaders;  // !!! 
+  friend class Invaders;  // !!!
 };
 
 #endif
